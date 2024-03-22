@@ -24,7 +24,8 @@ include '../koneksi.php';
                 <h3 class="text-primary"><i class=" me-2"></i>TIMORESTO</h3>
             </a>
             <div class="navbar-nav w-100">
-                <a href="kasir.php" class="btn btn-primary m-2 ">Entri Transaksi</a>
+                <a href="owner.php" class="btn btn-primary m-2 active ">Entri Order</a>
+                <a href="transaksi.php" class="btn btn-primary m-2 ">Entri Transaksi</a>
             </div>
         </nav>
     </div>
@@ -33,7 +34,7 @@ include '../koneksi.php';
     <div class="content">
         <!-- Navbar -->
         <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
-            <span class="d-none d-lg-inline-flex ms-auto text-secondary">HALAMAN KASIR</span>
+            <span class="d-none d-lg-inline-flex ms-auto text-secondary">HALAMAN OWNER</span>
             <div class="navbar-nav align-items-center ms-auto">
                 <div>
                     <a>
@@ -48,64 +49,58 @@ include '../koneksi.php';
         <div class="container-fluid pt-4 px-4">
             <div class="bg-light text-center rounded p-4">
                 <div class="d-flex align-items-center justify-content-between mb-4">
-                    <h6 class="mb-0">DATA TRANSAKSI</h6>
-                    <a href="tambahTransaksi.php" class="btn btn-outline-success ">Tambah Transaksi</a>
+                    <h6 class="mb-0">DATA ORDER</h6>
                 </div>
                 <div class="table-responsive">
                     <table class="table text-start align-middle table-bordered table-hover mb-0">
                         <thead>
                             <tr class="text-dark">
                                 <th scope="col">No</th>
-                                <th scope="col">ID Pesanan</th>
-                                <th scope="col">Total</th>
-                                <th scope="col">Bayar</th>
-                                <th scope="col">Action</th>
+                                <th scope="col">Nama Pelanggan</th>
+                                <th scope="col">Nama Menu</th>
+                                <th scope="col">Jumlah</th>
+                                <th scope="col">Kode Meja</th>
+                                <th scope="col">Nama User</th>
                             </tr>
                         </thead>
-
                         <tbody>
                             <?php
                             include '../koneksi.php';
 
-                            $query = "SELECT * FROM transaksi";
+                            $query = "SELECT * FROM pesanan";
                             $result = $koneksi->query($query);
 
                             if ($result && $result->num_rows > 0) {
                                 $no = 1;
-
                                 while ($row = $result->fetch_assoc()) {
-                                    $query_idPesanan = "SELECT idPesanan FROM pesanan WHERE idPesanan = '" . $row['idPesanan'] . "'";
-                                    $result_idPesanan = mysqli_query($koneksi, $query_idPesanan);
-                                    $row_idPesanan = mysqli_fetch_assoc($result_idPesanan);
-                                    $idPesanan = $row_idPesanan['idPesanan'];
+
+                                    $query_namaMenu = "SELECT namaMenu FROM menu WHERE idMenu = '" . $row['idMenu'] . "'";
+                                    $result_namaMenu = mysqli_query($koneksi, $query_namaMenu);
+                                    $row_namaMenu = mysqli_fetch_assoc($result_namaMenu);
+                                    $namaMenu = $row_namaMenu['namaMenu'];
+
+                                    $query_kodeMeja = "SELECT kodeMeja FROM meja WHERE idMeja = '" . $row['idMeja'] . "'";
+                                    $result_kodeMeja = mysqli_query($koneksi, $query_kodeMeja);
+                                    $row_kodeMeja = mysqli_fetch_assoc($result_kodeMeja);
+                                    $kodeMeja = $row_kodeMeja['kodeMeja'];
+
+                                    $query_namaPelanggan = "SELECT namaPelanggan FROM pelanggan WHERE idPelanggan = '" . $row['idPelanggan'] . "'";
+                                    $result_namaPelanggan = mysqli_query($koneksi, $query_namaPelanggan);
+                                    $row_namaPelanggan = mysqli_fetch_assoc($result_namaPelanggan);
+                                    $namaPelanggan = $row_namaPelanggan['namaPelanggan'];
+
+                                    $query_namaUser = "SELECT namaUser FROM user WHERE idUser = '" . $row['idUser'] . "'";
+                                    $result_namaUser = mysqli_query($koneksi, $query_namaUser);
+                                    $row_namaUser = mysqli_fetch_assoc($result_namaUser);
+                                    $namaUser = $row_namaUser['namaUser'];
                             ?>
                                     <tr>
                                         <td><?php echo $no++; ?></td>
-                                        <td><?php echo $idPesanan; ?></td>
-                                        <td>Rp. <?php echo number_format($row['total'], 0, ',', '.'); ?></td>
-                                        <td>Rp. <?php echo number_format($row['bayar'], 0, ',', '.'); ?></td>
-                                        <td>
-                                        <button type="button" class="btn btn-warning btn-sm edit-btn" onclick="window.location.href='editTransaksi.php?idTransaksi=<?php echo $row['idTransaksi']; ?>'">Edit</button>
-                                            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#hapusModal<?php echo $row['idTransaksi']; ?>">Delete</button>
-                                        </td>
-                                    </tr>
-                                    <div class="modal fade" id="hapusModal<?php echo $row['idTransaksi']; ?>" tabindex="-1" aria-labelledby="hapusModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="hapusModalLabel">Konfirmasi Hapus</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p>Apakah Anda yakin ingin menghapus data ini?</p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-                                                <a href="hapusTransaksi.php?idTransaksi=<?php echo $row['idTransaksi']; ?>" class="btn btn-danger">Hapus</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                        <td><?php echo $namaPelanggan; ?></td>
+                                        <td><?php echo $namaMenu; ?></td>
+                                        <td><?php echo $row['jumlah']; ?></td>
+                                        <td><?php echo $kodeMeja; ?></td>
+                                        <td><?php echo $namaUser; ?></td>
                             <?php
                                 }
                             } else {
@@ -115,7 +110,7 @@ include '../koneksi.php';
                         </tbody>
                     </table>
                     <div class="mt-4">
-                        <a href="cetakTransaksi.php" target="_blank" class="btn btn-secondary float-start">Generate Laporan</a>
+                        <a href="cetakOrder.php" target="_blank" class="btn btn-success float-start">Generate Laporan</a>
                     </div>
                 </div>
             </div>

@@ -66,8 +66,8 @@ if(isset($_GET['idMenu'])) {
                                 <input type="text" class="form-control" id="harga" name="harga" value="<?php echo $harga; ?>" placeholder="Harga" >
                                 <label for="harga">Harga</label>
                             </div>
-                            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
-                            <a href="waiter.php" class="btn btn-secondary">Cancel</a>
+                            <button type="submit" name="submit" class="btn btn-primary">Simpan</button>
+                            <a href="waiter.php" class="btn btn-secondary">Kembali</a>
                         </form>
                     </div>
                 </div>

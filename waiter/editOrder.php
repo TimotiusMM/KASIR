@@ -120,8 +120,8 @@ if(isset($_GET['idPesanan'])) {
                                 </select>
                                 <label for="idUser">Nama User</label>
                             </div>
-                            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
-                            <a href="order.php" class="btn btn-secondary">Cancel</a>
+                            <button type="submit" name="submit" class="btn btn-primary">Simpan</button>
+                            <a href="order.php" class="btn btn-secondary">Kembali</a>
                         </form>
                     </div>
                 </div>

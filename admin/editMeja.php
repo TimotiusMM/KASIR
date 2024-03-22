@@ -69,8 +69,8 @@ if(isset($_GET['idMeja'])) {
                             <label for="keterangan">Keterangan</label>
                         </div>
 
-                        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
-                        <a href="meja.php" class="btn btn-secondary">Cancel</a>
+                        <button type="submit" name="submit" class="btn btn-primary">Simpan</button>
+                        <a href="meja.php" class="btn btn-secondary">kembali</a>
                     </form>
                 </div>
             </div>

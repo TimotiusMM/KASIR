@@ -80,7 +80,9 @@ $result_pesanan = mysqli_query($koneksi, $query_pesanan);
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" id="total" name="total" value="<?php echo $total; ?>" placeholder="Total">
                                 <label for="total">Total</label>
+                                <span style="color: red">*Harga x Pesanan</span>
                             </div>
+
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" id="bayar" name="bayar" value="<?php echo $bayar; ?>" placeholder="Bayar">
                                 <label for="bayar">Bayar</label>
