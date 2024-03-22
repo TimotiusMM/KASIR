@@ -77,7 +77,7 @@ include '../koneksi.php';
                                         <td><?php echo $row['namaMenu']; ?></td>
                                         <td>Rp. <?php echo number_format($row['harga'], 0, ',', '.'); ?></td>
                                         <td>
-                                            <button type="button" class="btn btn-warning btn-sm edit-btn" onclick="window.location.href='editMenu.php?idMenu=<?php echo $row['idMenu']; ?>'" data-id="<?php echo $row['idMenu']; ?>" data-nama="<?php echo $row['namaMenu']; ?>" data-harga="<?php echo $row['harga']; ?>">Edit</button>
+                                        <button type="button" class="btn btn-warning btn-sm edit-btn" onclick="window.location.href='editMenu.php?idMenu=<?php echo $row['idMenu']; ?>'">Edit</button>
                                             <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#hapusModal<?php echo $row['idMenu']; ?>">Delete</button>
                                         </td>
                                     </tr>

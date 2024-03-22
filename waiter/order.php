@@ -102,7 +102,7 @@ include '../koneksi.php';
                             <td><?php echo $kodeMeja; ?></td>
                             <td><?php echo $namaUser; ?></td>
                                     <td>
-                                        <button type="button" class="btn btn-warning btn-sm edit-btn" onclick="window.location.href='editOrder.php?idPesanan=<?php echo $row['idPesanan']; ?>'" data-id="<?php echo $row['idPesanan']; ?>" data-menu="<?php echo $row['idMenu']; ?>" data-pelanggan="<?php echo $row['idPelanggan']; ?>">Edit</button>
+                                    <button type="button" class="btn btn-warning btn-sm edit-btn" onclick="window.location.href='editOrder.php?idPesanan=<?php echo $row['idPesanan']; ?>'">Edit</button>
                                         <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#hapusModal<?php echo $row['idPesanan']; ?>">Delete</button>
                                     </td>
                                 </tr>

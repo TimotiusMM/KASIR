@@ -81,11 +81,8 @@ include '../koneksi.php';
                                     <td><?php echo $row['keterangan']; ?></td>
                                     
                                     <td>
-                                        <button type="button" class="btn btn-warning btn-sm edit-btn"
-                                            onclick="window.location.href='editMeja.php?idMeja=<?php echo $row['idMeja']; ?>'" 
-                                            data-id="<?php echo $row['idMeja']; ?>" 
-                                            data-nama="<?php echo $row['kodeMeja']; ?>" 
-                                            data-harga="<?php echo $row['keterangan']; ?>">Edit</button>
+                                    <button type="button" class="btn btn-warning btn-sm edit-btn" onclick="window.location.href='editMeja.php?idMeja=<?php echo $row['idMeja']; ?>'">Edit</button>
+
                                         <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#hapusModal<?php echo $row['idMeja']; ?>">Delete</button>
                                     </td>
                                 </tr>
