@@ -132,7 +132,7 @@ include '../koneksi.php';
                     </tbody>
                 </table>
                 <div class="mt-4">
-                    <a href="cetakOrder.php" target="_blank" class="btn btn-secondary float-start">Generate Order</a>
+                    <a href="cetakOrder.php" target="_blank" class="btn btn-secondary float-start">Generate Laporan</a>
                 </div>
             </div>
         </div>
